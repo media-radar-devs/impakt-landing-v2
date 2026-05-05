@@ -1,3 +1,5 @@
+import banner from '../assets/img/impakt_test.png'
+
 export function Hero() {
   const today = new Date().toLocaleDateString('es-CL', {
     weekday: 'long',
@@ -8,6 +10,12 @@ export function Hero() {
 
   return (
     <section className="hero">
+      <img
+        src={banner}
+        alt=""
+        aria-hidden="true"
+        className="hero__banner"
+      />
       <div className="container">
         <div className="hero__dateline">
           <span>Impakt Media</span>

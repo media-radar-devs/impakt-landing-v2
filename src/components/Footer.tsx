@@ -1,3 +1,5 @@
+import logo from '../assets/img/impakt.png'
+
 export function Footer() {
   const year = new Date().getFullYear()
 
@@ -13,7 +15,7 @@ export function Footer() {
 
         <div className="footer__grid">
           <div className="footer__brand">
-            <h5>Impakt</h5>
+            <img src={logo} alt="Impakt" className="footer__logo" />
             <p>
               Servicio chileno de monitoreo de medios digitales. Hecho en
               Santiago para equipos que no pueden permitirse llegar tarde.
@@ -32,7 +34,7 @@ export function Footer() {
           <div>
             <h5>Contacto</h5>
             <ul>
-              <li><a href="mailto:hola@impaktmedia.cl">hola@impaktmedia.cl</a></li>
+              <li><a href="mailto:equipo@impaktmedia.cl">equipo@impaktmedia.cl</a></li>
               <li><a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a></li>
               <li><a href="https://t.me" target="_blank" rel="noreferrer">Telegram</a></li>
             </ul>

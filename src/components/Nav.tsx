@@ -1,9 +1,11 @@
+import logo from '../assets/img/impakt.png'
+
 export function Nav() {
   return (
     <header className="nav">
       <div className="container nav__inner">
         <a href="#" className="brand" aria-label="Impakt — inicio">
-          impakt<span className="brand__star">*</span>
+          <img src={logo} alt="Impakt" className="brand__logo" />
         </a>
         <nav className="nav__links" aria-label="Navegación principal">
           <a href="#servicios">Servicios</a>

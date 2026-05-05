@@ -1,3 +1,5 @@
+import { SubscriptionForm } from './SubscriptionForm'
+
 const FEATURES: { strong: string; rest: string }[] = [
   { strong: '10 conceptos', rest: 'personalizados a vigilar' },
   { strong: 'Alertas en Telegram', rest: 'al instante, sin demora' },
@@ -35,21 +37,13 @@ export function Pricing() {
             </p>
 
             <div className="price__amount">
-              <span className="num">$49.900</span>
+              <span className="num">$10.000</span>
               <span className="currency">CLP</span>
             </div>
             <div className="price__period">por mes · cancela cuando quieras</div>
 
             <div className="price__cta">
-              <a
-                className="btn btn--primary btn--big"
-                href="https://www.mercadopago.cl"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Suscribirse con MercadoPago
-                <span className="arrow" aria-hidden="true">→</span>
-              </a>
+              <SubscriptionForm />
             </div>
           </div>
 
