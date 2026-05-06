@@ -1,17 +1,23 @@
 import { useState } from 'react'
 
-const MERCADOPAGO_URL =
-  'https://www.mercadopago.cl/subscriptions/checkout?preapproval_plan_id=6734b17731b54ef89ff893b2d7dea1ea'
+const CONTACT_EMAIL = 'equipo@impaktmedia.cl'
 
 export function SubscriptionForm() {
   const [open, setOpen] = useState(false)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [company, setCompany] = useState('')
+  const [context, setContext] = useState('')
+  const [sent, setSent] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    window.location.href = MERCADOPAGO_URL
+    const subject = encodeURIComponent('Solicitud de acceso — Impakt')
+    const body = encodeURIComponent(
+      `Nombre: ${name}\nEmail: ${email}\nOrganización: ${company}\n\nContexto:\n${context}`,
+    )
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`
+    setSent(true)
   }
 
   return (
@@ -19,9 +25,12 @@ export function SubscriptionForm() {
       <button
         type="button"
         className="btn btn--primary btn--big"
-        onClick={() => setOpen(true)}
+        onClick={() => {
+          setSent(false)
+          setOpen(true)
+        }}
       >
-        Suscribirse con MercadoPago
+        Solicitar acceso
         <span className="arrow" aria-hidden="true">→</span>
       </button>
 
@@ -43,10 +52,11 @@ export function SubscriptionForm() {
               ×
             </button>
             <h3 id="sub-modal-title" className="sub-modal__title">
-              Empezá tu <em>suscripción</em>
+              Solicitar <em>acceso</em>
             </h3>
             <p className="sub-modal__sub">
-              Completá tus datos y te llevamos al checkout de MercadoPago.
+              Cuéntanos tu contexto. Te respondemos con una propuesta editorial
+              ajustada a tu equipo.
             </p>
             <form className="sub-form" onSubmit={handleSubmit}>
               <label className="sub-form__field">
@@ -74,7 +84,7 @@ export function SubscriptionForm() {
                 />
               </label>
               <label className="sub-form__field">
-                <span>Empresa</span>
+                <span>Organización</span>
                 <input
                   type="text"
                   name="company"
@@ -82,11 +92,21 @@ export function SubscriptionForm() {
                   onChange={(e) => setCompany(e.target.value)}
                   required
                   autoComplete="organization"
-                  placeholder="Nombre de tu empresa"
+                  placeholder="Empresa, consultora, equipo"
+                />
+              </label>
+              <label className="sub-form__field">
+                <span>Contexto</span>
+                <input
+                  type="text"
+                  name="context"
+                  value={context}
+                  onChange={(e) => setContext(e.target.value)}
+                  placeholder="Brevemente: qué necesitan leer"
                 />
               </label>
               <button type="submit" className="btn btn--primary btn--big sub-form__submit">
-                Suscribirse
+                {sent ? 'Enviado' : 'Enviar solicitud'}
                 <span className="arrow" aria-hidden="true">→</span>
               </button>
             </form>

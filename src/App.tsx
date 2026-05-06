@@ -3,7 +3,7 @@ import { Nav } from './components/Nav'
 import { Hero } from './components/Hero'
 import { Services } from './components/Services'
 import { Process } from './components/Process'
-import { Pricing } from './components/Pricing'
+import { Contact } from './components/Contact'
 import { Footer } from './components/Footer'
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
         <Hero />
         <Services />
         <Process />
-        <Pricing />
+        <Contact />
       </main>
       <Footer />
     </>

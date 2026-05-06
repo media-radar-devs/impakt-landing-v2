@@ -10,11 +10,10 @@ export function Nav() {
         <nav className="nav__links" aria-label="Navegación principal">
           <a href="#servicios">Servicios</a>
           <a href="#proceso">Cómo funciona</a>
-          <a href="#precio">Precio</a>
           <a href="#contacto">Contacto</a>
         </nav>
-        <a className="btn btn--primary" href="#precio">
-          Suscribirse
+        <a className="btn btn--primary" href="#contacto">
+          Solicitar acceso
           <span className="arrow" aria-hidden="true">→</span>
         </a>
       </div>

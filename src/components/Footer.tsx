@@ -4,30 +4,27 @@ export function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="footer" id="contacto">
+    <footer className="footer">
       <div className="container">
-        <h2 className="footer__big">
-          Si lo dicen,
-          <br />
-          lo <em>sabes</em>
-          <sup>*</sup>
+        <h2 className="footer__lead">
+          Lectura editorial de los medios chilenos, con <em>criterio</em>.
         </h2>
 
         <div className="footer__grid">
           <div className="footer__brand">
             <img src={logo} alt="Impakt" className="footer__logo" />
             <p>
-              Servicio chileno de monitoreo de medios digitales. Hecho en
-              Santiago para equipos que no pueden permitirse llegar tarde.
+              Servicio chileno de cobertura editorial sobre los medios
+              digitales. Hecho en Santiago para equipos profesionales.
             </p>
           </div>
 
           <div>
-            <h5>Producto</h5>
+            <h5>Sitio</h5>
             <ul>
               <li><a href="#servicios">Servicios</a></li>
               <li><a href="#proceso">Cómo funciona</a></li>
-              <li><a href="#precio">Precio</a></li>
+              <li><a href="#contacto">Contacto</a></li>
             </ul>
           </div>
 
@@ -36,7 +33,6 @@ export function Footer() {
             <ul>
               <li><a href="mailto:equipo@impaktmedia.cl">equipo@impaktmedia.cl</a></li>
               <li><a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a></li>
-              <li><a href="https://t.me" target="_blank" rel="noreferrer">Telegram</a></li>
             </ul>
           </div>
 
@@ -51,7 +47,7 @@ export function Footer() {
 
         <div className="footer__bottom">
           <span>© {year} Impakt Media — Santiago, Chile</span>
-          <span>Hecho con código y café · v1.0</span>
+          <span>v1.0</span>
         </div>
       </div>
     </footer>
