@@ -1,6 +1,10 @@
 import logo from '../assets/img/impakt.png'
 
-export function Nav() {
+interface NavProps {
+  onRequestAccess: () => void
+}
+
+export function Nav({ onRequestAccess }: NavProps) {
   return (
     <header className="nav">
       <div className="container nav__inner">
@@ -12,10 +16,10 @@ export function Nav() {
           <a href="#proceso">Cómo funciona</a>
           <a href="#contacto">Contacto</a>
         </nav>
-        <a className="btn btn--primary" href="#contacto">
+        <button type="button" className="btn btn--primary" onClick={onRequestAccess}>
           Solicitar acceso
           <span className="arrow" aria-hidden="true">→</span>
-        </a>
+        </button>
       </div>
     </header>
   )

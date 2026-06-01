@@ -1,6 +1,10 @@
 import banner from '../assets/img/impakt_test.png'
 
-export function Hero() {
+interface HeroProps {
+  onRequestAccess: () => void
+}
+
+export function Hero({ onRequestAccess }: HeroProps) {
   const today = new Date().toLocaleDateString('es-CL', {
     weekday: 'long',
     day: 'numeric',
@@ -39,10 +43,10 @@ export function Hero() {
             reaccionar.
           </p>
           <div className="hero__cta">
-            <a className="btn btn--primary btn--big" href="#contacto">
+            <button type="button" className="btn btn--primary btn--big" onClick={onRequestAccess}>
               Solicitar acceso
               <span className="arrow" aria-hidden="true">→</span>
-            </a>
+            </button>
             <a className="btn btn--ghost btn--big" href="#proceso">
               Ver metodología
             </a>

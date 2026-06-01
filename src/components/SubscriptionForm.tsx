@@ -1,9 +1,24 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const CONTACT_EMAIL = 'equipo@impaktmedia.cl'
 
-export function SubscriptionForm() {
-  const [open, setOpen] = useState(false)
+interface SubscriptionFormProps {
+  open?: boolean
+  onClose?: () => void
+}
+
+export function SubscriptionForm({ open: externalOpen, onClose }: SubscriptionFormProps = {}) {
+  const [internalOpen, setInternalOpen] = useState(false)
+  const open = externalOpen ?? internalOpen
+  const handleClose = () => {
+    setInternalOpen(false)
+    onClose?.()
+  }
+
+  useEffect(() => {
+    if (externalOpen) setInternalOpen(false)
+  }, [externalOpen])
+
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [company, setCompany] = useState('')
@@ -27,7 +42,7 @@ export function SubscriptionForm() {
         className="btn btn--primary btn--big"
         onClick={() => {
           setSent(false)
-          setOpen(true)
+          setInternalOpen(true)
         }}
       >
         Solicitar acceso
@@ -40,14 +55,14 @@ export function SubscriptionForm() {
           role="dialog"
           aria-modal="true"
           aria-labelledby="sub-modal-title"
-          onClick={() => setOpen(false)}
+          onClick={handleClose}
         >
           <div className="sub-modal__card" onClick={(e) => e.stopPropagation()}>
             <button
               type="button"
               className="sub-modal__close"
               aria-label="Cerrar"
-              onClick={() => setOpen(false)}
+              onClick={handleClose}
             >
               ×
             </button>
