@@ -47,7 +47,7 @@ export function Ticker() {
       <div className="ticker__feed">
         <div className="ticker__track">
           {items.map((item, i) => (
-            <span className="ticker__item" key={i}>
+            <span className="ticker__item" key={`${item.keyword}-${item.source}-${i}`}>
               <span className="t">{stamp(i)}</span>
               <span className="arrow">▸</span>
               <span className="k">{item.keyword}</span>

@@ -1,7 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import telegramLogo from '../assets/img/telegram-logo-0-2.png'
-
-const CONTACT_EMAIL = 'equipo@impaktmedia.cl'
+import { CONTACT_EMAIL, TELEGRAM_URL } from '../config'
 
 interface SubscriptionFormProps {
   open?: boolean
@@ -25,15 +24,33 @@ export function SubscriptionForm({ open: externalOpen, onClose }: SubscriptionFo
   const [company, setCompany] = useState('')
   const [context, setContext] = useState('')
   const [sent, setSent] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const firstInputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    if (!open) return
+    firstInputRef.current?.focus()
+    const handleKeydown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') handleClose()
+    }
+    document.addEventListener('keydown', handleKeydown)
+    return () => document.removeEventListener('keydown', handleKeydown)
+  }, [open])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    setLoading(true)
     const subject = encodeURIComponent('Solicitud de acceso — Impakt')
     const body = encodeURIComponent(
       `Nombre: ${name}\nEmail: ${email}\nOrganización: ${company}\n\nContexto:\n${context}`,
     )
     window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`
     setSent(true)
+    setLoading(false)
+    setName('')
+    setEmail('')
+    setCompany('')
+    setContext('')
   }
 
   return (
@@ -52,7 +69,7 @@ export function SubscriptionForm({ open: externalOpen, onClose }: SubscriptionFo
         </button>
         <a
           className="btn btn--telegram btn--big"
-          href="https://t.me/danialertsbot"
+          href={TELEGRAM_URL}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -60,6 +77,7 @@ export function SubscriptionForm({ open: externalOpen, onClose }: SubscriptionFo
           Acceso vía Telegram
         </a>
       </div>
+
 
       {open && (
         <div
@@ -89,6 +107,7 @@ export function SubscriptionForm({ open: externalOpen, onClose }: SubscriptionFo
               <label className="sub-form__field">
                 <span>Nombre</span>
                 <input
+                  ref={firstInputRef}
                   type="text"
                   name="name"
                   value={name}
@@ -132,9 +151,9 @@ export function SubscriptionForm({ open: externalOpen, onClose }: SubscriptionFo
                   placeholder="Brevemente: qué necesitan leer"
                 />
               </label>
-              <button type="submit" className="btn btn--primary btn--big sub-form__submit">
-                {sent ? 'Enviado' : 'Enviar solicitud'}
-                <span className="arrow" aria-hidden="true">→</span>
+              <button type="submit" className="btn btn--primary btn--big sub-form__submit" disabled={loading}>
+                {loading ? 'Enviando…' : sent ? 'Enviado ✓' : 'Enviar solicitud'}
+                {!loading && !sent && <span className="arrow" aria-hidden="true">→</span>}
               </button>
             </form>
           </div>

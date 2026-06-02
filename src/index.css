@@ -15,6 +15,8 @@
   --rule-2: rgba(0, 0, 0, 0.06);
   --signal: #FFC107;
   --signal-soft: rgba(255, 193, 7, 0.15);
+  --telegram: #29a8e0;
+  --paper-crema: rgb(241, 234, 217);
 
   --serif: "IBM Plex Serif", "Times New Roman", serif;
   --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -177,7 +179,7 @@ button {
   z-index: 50;
   background: var(--ink);
   color: var(--paper);
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid var(--ink);
   font-family: var(--mono);
   font-size: 12px;
   display: flex;
@@ -284,7 +286,7 @@ button {
   flex-shrink: 0;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   .ticker__meta { display: none; }
 }
 
@@ -369,7 +371,7 @@ button {
   right: 0;
 }
 
-@media (max-width: 760px) {
+@media (max-width: 768px) {
   .nav__links { display: none; }
 }
 
@@ -419,8 +421,8 @@ button {
 }
 
 .btn--telegram:hover {
-  border-color: #29a8e0;
-  color: #29a8e0;
+  border-color: var(--telegram);
+  color: var(--telegram);
   transform: translateY(-1px);
 }
 
@@ -781,7 +783,7 @@ button {
   }
 }
 
-.footer h5 {
+.footer h3 {
   font-family: var(--mono);
   font-size: 11px;
   letter-spacing: 0.18em;
@@ -952,4 +954,94 @@ button {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+/* =========================================================================
+   Skip link (accesibilidad de teclado)
+   ========================================================================= */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.skip-link:focus {
+  position: fixed;
+  left: 16px;
+  top: 40px;
+  z-index: 9999;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 8px 16px;
+  border-radius: 4px;
+  outline: 2px solid var(--signal);
+}
+
+/* =========================================================================
+   Footer: headings de sección
+   ========================================================================= */
+
+.footer__section-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ash-2);
+  margin: 0 0 14px;
+  font-weight: 500;
+}
+
+.footer__link--disabled {
+  opacity: 0.4;
+  pointer-events: none;
+  cursor: default;
+}
+
+/* =========================================================================
+   Botón: estado deshabilitado
+   ========================================================================= */
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* =========================================================================
+   Ticker: pausa en hover
+   ========================================================================= */
+
+.ticker:hover .ticker__track {
+  animation-play-state: paused;
+}
+
+/* =========================================================================
+   Tablet (600–899px): grids de 2 columnas
+   ========================================================================= */
+
+@media (min-width: 600px) and (max-width: 899px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 600px) {
+  .steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =========================================================================
+   Accesibilidad: respeta preferencia de movimiento reducido
+   ========================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker__dot   { animation: none; }
+  .ticker__track { animation: none; }
+  .brand__star   { animation: none; transform: translateY(-2px); }
+  .hero__headline,
+  .hero__sub     { animation: none; opacity: 1; transform: none; }
 }

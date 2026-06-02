@@ -1,5 +1,6 @@
 import banner from '../assets/img/impakt_test.png'
 import telegramLogo from '../assets/img/telegram-logo-0-2.png'
+import { TELEGRAM_URL } from '../config'
 
 interface HeroProps {
   onRequestAccess: () => void
@@ -16,7 +17,7 @@ export function Hero({ onRequestAccess }: HeroProps) {
   return (
     <section className="hero">
       <div className="hero__banner-wrap">
-        <img src={banner} alt="Impakt" className="hero__banner" />
+        <img src={banner} alt="Banner editorial de Impakt" className="hero__banner" loading="lazy" decoding="async" />
       </div>
 
       <div className="container hero__body">
@@ -53,7 +54,7 @@ export function Hero({ onRequestAccess }: HeroProps) {
             </a>
             <a
               className="btn btn--telegram btn--big"
-              href="https://t.me/danialertsbot"
+              href={TELEGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
             >

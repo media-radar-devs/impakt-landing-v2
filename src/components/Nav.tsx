@@ -1,5 +1,6 @@
 import logo from '../assets/img/impakt.png'
 import telegramLogo from '../assets/img/telegram-logo-0-2.png'
+import { TELEGRAM_URL } from '../config'
 
 interface NavProps {
   onRequestAccess: () => void
@@ -10,7 +11,7 @@ export function Nav({ onRequestAccess }: NavProps) {
     <header className="nav">
       <div className="container nav__inner">
         <a href="#" className="brand" aria-label="Impakt — inicio">
-          <img src={logo} alt="Impakt" className="brand__logo" />
+          <img src={logo} alt="Impakt — Inicio" className="brand__logo" />
         </a>
         <nav className="nav__links" aria-label="Navegación principal">
           <a href="#servicios">Servicios</a>
@@ -24,7 +25,7 @@ export function Nav({ onRequestAccess }: NavProps) {
           </button>
           <a
             className="btn btn--telegram"
-            href="https://t.me/danialertsbot"
+            href={TELEGRAM_URL}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Acceso vía Telegram"

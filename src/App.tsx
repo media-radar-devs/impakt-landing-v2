@@ -12,9 +12,10 @@ function App() {
 
   return (
     <>
+      <a href="#main-content" className="skip-link">Saltar al contenido</a>
       <Ticker />
       <Nav onRequestAccess={() => setModalOpen(true)} />
-      <main>
+      <main id="main-content">
         <Hero onRequestAccess={() => setModalOpen(true)} />
         <Services />
         <Process />

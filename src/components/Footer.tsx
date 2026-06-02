@@ -12,7 +12,7 @@ export function Footer() {
 
         <div className="footer__grid">
           <div className="footer__brand">
-            <img src={logo} alt="Impakt" className="footer__logo" />
+            <img src={logo} alt="Impakt Media" className="footer__logo" loading="lazy" decoding="async" />
             <p>
               Servicio chileno de cobertura editorial sobre los medios
               digitales. Hecho en Santiago para equipos profesionales.
@@ -20,7 +20,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h5>Sitio</h5>
+            <h3 className="footer__section-title">Sitio</h3>
             <ul>
               <li><a href="#servicios">Servicios</a></li>
               <li><a href="#proceso">Cómo funciona</a></li>
@@ -29,18 +29,18 @@ export function Footer() {
           </div>
 
           <div>
-            <h5>Contacto</h5>
+            <h3 className="footer__section-title">Contacto</h3>
             <ul>
               <li><a href="mailto:equipo@impaktmedia.cl">equipo@impaktmedia.cl</a></li>
-              <li><a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a></li>
+              <li><a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
             </ul>
           </div>
 
           <div>
-            <h5>Legal</h5>
+            <h3 className="footer__section-title">Legal</h3>
             <ul>
-              <li><a href="#">Política de privacidad</a></li>
-              <li><a href="#">Términos de uso</a></li>
+              <li><a href="#" aria-disabled="true" className="footer__link--disabled">Política de privacidad</a></li>
+              <li><a href="#" aria-disabled="true" className="footer__link--disabled">Términos de uso</a></li>
             </ul>
           </div>
         </div>
