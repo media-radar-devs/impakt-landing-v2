@@ -13,7 +13,7 @@ export function Footer() {
 
         <div className="footer__grid">
           <div className="footer__brand">
-            <img src={logo} alt="Impakt Media" className="footer__logo" loading="lazy" decoding="async" />
+            <img src={logo} alt="Impakt Media" className="footer__logo" loading="lazy" decoding="async" width={120} height={44} />
             <p>
               Servicio chileno de cobertura editorial sobre los medios
               digitales. Hecho en Santiago para equipos profesionales.

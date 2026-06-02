@@ -11,7 +11,7 @@ export function Nav({ onRequestAccess }: NavProps) {
     <header className="nav">
       <div className="container nav__inner">
         <a href="#" className="brand" aria-label="Impakt — inicio">
-          <img src={logo} alt="Impakt — Inicio" className="brand__logo" />
+          <img src={logo} alt="Impakt — Inicio" className="brand__logo" width={120} height={36} />
         </a>
         <nav className="nav__links" aria-label="Navegación principal">
           <a href="#servicios">Servicios</a>

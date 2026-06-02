@@ -1,0 +1,30 @@
+# Impakt Media
+
+> Servicio chileno de lectura sistemática de los medios digitales. Cobertura editorial continua de la agenda mediática nacional, con análisis de coyuntura, sectores y actores para equipos profesionales.
+
+## Qué hacemos
+
+- Monitoreo continuo de los principales medios digitales chilenos
+- Análisis editorial con criterio profesional
+- Reportes de coyuntura, sectores y actores para equipos de comunicaciones, asuntos públicos y dirección ejecutiva
+
+## Público objetivo
+
+Áreas de comunicaciones, asuntos públicos, dirección ejecutiva y consultoría política que necesitan leer el ecosistema mediático chileno antes de reaccionar.
+
+## Páginas
+
+- [Inicio](https://impaktmedia.cl/): Landing principal con servicios, metodología y contacto
+- [Términos de Uso](https://impaktmedia.cl/terminos-de-uso)
+- [Política de Privacidad](https://impaktmedia.cl/politica-de-privacidad)
+
+## Contacto
+
+- Email: equipo@impaktmedia.cl
+- LinkedIn: https://www.linkedin.com/company/impakt-media-cl
+- X/Twitter: https://x.com/impaktmediacl
+- Telegram: https://t.me/danialertsbot
+
+## Ubicación
+
+Santiago, Chile

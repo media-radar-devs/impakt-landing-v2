@@ -17,7 +17,7 @@ export function Hero({ onRequestAccess }: HeroProps) {
   return (
     <section className="hero">
       <div className="hero__banner-wrap">
-        <img src={banner} alt="Banner editorial de Impakt" className="hero__banner" loading="lazy" decoding="async" />
+        <img src={banner} alt="Banner editorial de Impakt" className="hero__banner" fetchPriority="high" loading="eager" decoding="async" width={1200} height={400} />
       </div>
 
       <div className="container hero__body">

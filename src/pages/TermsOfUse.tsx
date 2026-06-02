@@ -1,7 +1,18 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../assets/img/impakt.png'
 
 export function TermsOfUse() {
+  useEffect(() => {
+    document.title = 'Términos de Uso — Impakt Media'
+    const canonical = document.querySelector('link[rel="canonical"]')
+    if (canonical) canonical.setAttribute('href', 'https://impaktmedia.cl/terminos-de-uso')
+    return () => {
+      document.title = 'Impakt — Lectura sistemática de los medios chilenos'
+      if (canonical) canonical.setAttribute('href', 'https://impaktmedia.cl/')
+    }
+  }, [])
+
   return (
     <div className="legal-page">
       <header className="legal-page__nav">
