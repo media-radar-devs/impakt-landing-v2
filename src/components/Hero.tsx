@@ -1,4 +1,5 @@
 import banner from '../assets/img/impakt_test.png'
+import telegramLogo from '../assets/img/telegram-logo-0-2.png'
 
 interface HeroProps {
   onRequestAccess: () => void
@@ -49,6 +50,15 @@ export function Hero({ onRequestAccess }: HeroProps) {
             </button>
             <a className="btn btn--ghost btn--big" href="#proceso">
               Ver metodología
+            </a>
+            <a
+              className="btn btn--telegram btn--big"
+              href="https://t.me/danialertsbot"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={telegramLogo} alt="Telegram" className="btn__telegram-icon" />
+              Acceso vía Telegram
             </a>
           </div>
         </div>

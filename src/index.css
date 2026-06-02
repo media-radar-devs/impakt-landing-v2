@@ -373,6 +373,12 @@ button {
   .nav__links { display: none; }
 }
 
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -404,6 +410,25 @@ button {
 .btn--ghost:hover {
   border-color: var(--ink);
   transform: translateY(-1px);
+}
+
+.btn--telegram {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--rule);
+}
+
+.btn--telegram:hover {
+  border-color: #29a8e0;
+  color: #29a8e0;
+  transform: translateY(-1px);
+}
+
+.btn__telegram-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .btn--big {
@@ -921,4 +946,10 @@ button {
   margin-top: 8px;
   justify-content: center;
   width: 100%;
+}
+
+.contact__cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }

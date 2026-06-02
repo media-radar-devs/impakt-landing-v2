@@ -1,4 +1,5 @@
 import logo from '../assets/img/impakt.png'
+import telegramLogo from '../assets/img/telegram-logo-0-2.png'
 
 interface NavProps {
   onRequestAccess: () => void
@@ -16,10 +17,22 @@ export function Nav({ onRequestAccess }: NavProps) {
           <a href="#proceso">Cómo funciona</a>
           <a href="#contacto">Contacto</a>
         </nav>
-        <button type="button" className="btn btn--primary" onClick={onRequestAccess}>
-          Solicitar acceso
-          <span className="arrow" aria-hidden="true">→</span>
-        </button>
+        <div className="nav__actions">
+          <button type="button" className="btn btn--primary" onClick={onRequestAccess}>
+            Solicitar acceso
+            <span className="arrow" aria-hidden="true">→</span>
+          </button>
+          <a
+            className="btn btn--telegram"
+            href="https://t.me/danialertsbot"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Acceso vía Telegram"
+          >
+            <img src={telegramLogo} alt="Telegram" className="btn__telegram-icon" />
+            Telegram
+          </a>
+        </div>
       </div>
     </header>
   )

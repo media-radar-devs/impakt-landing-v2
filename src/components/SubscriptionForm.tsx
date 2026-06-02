@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import telegramLogo from '../assets/img/telegram-logo-0-2.png'
 
 const CONTACT_EMAIL = 'equipo@impaktmedia.cl'
 
@@ -37,17 +38,28 @@ export function SubscriptionForm({ open: externalOpen, onClose }: SubscriptionFo
 
   return (
     <>
-      <button
-        type="button"
-        className="btn btn--primary btn--big"
-        onClick={() => {
-          setSent(false)
-          setInternalOpen(true)
-        }}
-      >
-        Solicitar acceso
-        <span className="arrow" aria-hidden="true">→</span>
-      </button>
+      <div className="contact__cta-group">
+        <button
+          type="button"
+          className="btn btn--primary btn--big"
+          onClick={() => {
+            setSent(false)
+            setInternalOpen(true)
+          }}
+        >
+          Solicitar acceso
+          <span className="arrow" aria-hidden="true">→</span>
+        </button>
+        <a
+          className="btn btn--telegram btn--big"
+          href="https://t.me/danialertsbot"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src={telegramLogo} alt="Telegram" className="btn__telegram-icon" />
+          Acceso vía Telegram
+        </a>
+      </div>
 
       {open && (
         <div
