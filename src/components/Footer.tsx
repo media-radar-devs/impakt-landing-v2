@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import logo from '../assets/img/impakt.png'
 
 export function Footer() {
@@ -32,15 +33,16 @@ export function Footer() {
             <h3 className="footer__section-title">Contacto</h3>
             <ul>
               <li><a href="mailto:equipo@impaktmedia.cl">equipo@impaktmedia.cl</a></li>
-              <li><a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+              <li><a href="https://www.linkedin.com/company/impakt-media-cl" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+              <li><a href="https://x.com/impaktmediacl" target="_blank" rel="noopener noreferrer">X (Twitter)</a></li>
             </ul>
           </div>
 
           <div>
             <h3 className="footer__section-title">Legal</h3>
             <ul>
-              <li><a href="#" aria-disabled="true" className="footer__link--disabled">Política de privacidad</a></li>
-              <li><a href="#" aria-disabled="true" className="footer__link--disabled">Términos de uso</a></li>
+              <li><Link to="/politica-de-privacidad">Política de privacidad</Link></li>
+              <li><Link to="/terminos-de-uso">Términos de uso</Link></li>
             </ul>
           </div>
         </div>
