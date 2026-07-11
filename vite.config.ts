@@ -3,8 +3,5 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  server: {
-    // SPA fallback: serve index.html for any unknown route
-    historyApiFallback: true,
-  },
+  // Vite's dev server serves index.html for unknown routes by default (appType: 'spa')
 })
