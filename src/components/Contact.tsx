@@ -1,6 +1,11 @@
 import { SubscriptionForm } from './SubscriptionForm'
 
-export function Contact() {
+interface ContactProps {
+  modalOpen: boolean
+  onModalClose: () => void
+}
+
+export function Contact({ modalOpen, onModalClose }: ContactProps) {
   return (
     <section className="section" id="contacto">
       <div className="container">
@@ -37,7 +42,7 @@ export function Contact() {
               Cuéntanos brevemente tu contexto y te respondemos con una
               propuesta editorial ajustada.
             </p>
-            <SubscriptionForm />
+            <SubscriptionForm open={modalOpen} onClose={onModalClose} />
           </div>
         </div>
       </div>

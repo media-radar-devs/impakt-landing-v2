@@ -1,6 +1,12 @@
 import banner from '../assets/img/impakt_test.png'
+import telegramLogo from '../assets/img/telegram-logo-0-2.png'
+import { TELEGRAM_URL } from '../config'
 
-export function Hero() {
+interface HeroProps {
+  onRequestAccess: () => void
+}
+
+export function Hero({ onRequestAccess }: HeroProps) {
   const today = new Date().toLocaleDateString('es-CL', {
     weekday: 'long',
     day: 'numeric',
@@ -11,7 +17,7 @@ export function Hero() {
   return (
     <section className="hero">
       <div className="hero__banner-wrap">
-        <img src={banner} alt="Impakt" className="hero__banner" />
+        <img src={banner} alt="Banner editorial de Impakt" className="hero__banner" fetchPriority="high" loading="eager" decoding="async" width={1200} height={400} />
       </div>
 
       <div className="container hero__body">
@@ -39,12 +45,21 @@ export function Hero() {
             reaccionar.
           </p>
           <div className="hero__cta">
-            <a className="btn btn--primary btn--big" href="#contacto">
+            <button type="button" className="btn btn--primary btn--big" onClick={onRequestAccess}>
               Solicitar acceso
               <span className="arrow" aria-hidden="true">→</span>
-            </a>
+            </button>
             <a className="btn btn--ghost btn--big" href="#proceso">
               Ver metodología
+            </a>
+            <a
+              className="btn btn--telegram btn--big"
+              href={TELEGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={telegramLogo} alt="Telegram" className="btn__telegram-icon" />
+              Acceso vía Telegram
             </a>
           </div>
         </div>

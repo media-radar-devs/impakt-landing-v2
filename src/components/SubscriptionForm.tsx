@@ -1,38 +1,83 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import telegramLogo from '../assets/img/telegram-logo-0-2.png'
+import { CONTACT_EMAIL, TELEGRAM_URL } from '../config'
 
-const CONTACT_EMAIL = 'equipo@impaktmedia.cl'
+interface SubscriptionFormProps {
+  open?: boolean
+  onClose?: () => void
+}
 
-export function SubscriptionForm() {
-  const [open, setOpen] = useState(false)
+export function SubscriptionForm({ open: externalOpen, onClose }: SubscriptionFormProps = {}) {
+  const [internalOpen, setInternalOpen] = useState(false)
+  const open = externalOpen ?? internalOpen
+  const handleClose = () => {
+    setInternalOpen(false)
+    onClose?.()
+  }
+
+  useEffect(() => {
+    if (externalOpen) setInternalOpen(false)
+  }, [externalOpen])
+
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [company, setCompany] = useState('')
   const [context, setContext] = useState('')
   const [sent, setSent] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const firstInputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    if (!open) return
+    firstInputRef.current?.focus()
+    const handleKeydown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') handleClose()
+    }
+    document.addEventListener('keydown', handleKeydown)
+    return () => document.removeEventListener('keydown', handleKeydown)
+  }, [open])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    setLoading(true)
     const subject = encodeURIComponent('Solicitud de acceso — Impakt')
     const body = encodeURIComponent(
       `Nombre: ${name}\nEmail: ${email}\nOrganización: ${company}\n\nContexto:\n${context}`,
     )
     window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`
     setSent(true)
+    setLoading(false)
+    setName('')
+    setEmail('')
+    setCompany('')
+    setContext('')
   }
 
   return (
     <>
-      <button
-        type="button"
-        className="btn btn--primary btn--big"
-        onClick={() => {
-          setSent(false)
-          setOpen(true)
-        }}
-      >
-        Solicitar acceso
-        <span className="arrow" aria-hidden="true">→</span>
-      </button>
+      <div className="contact__cta-group">
+        <button
+          type="button"
+          className="btn btn--primary btn--big"
+          onClick={() => {
+            setSent(false)
+            setInternalOpen(true)
+          }}
+        >
+          Solicitar acceso
+          <span className="arrow" aria-hidden="true">→</span>
+        </button>
+        <a
+          className="btn btn--telegram btn--big"
+          href={TELEGRAM_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src={telegramLogo} alt="Telegram" className="btn__telegram-icon" />
+          Acceso vía Telegram
+        </a>
+      </div>
+
 
       {open && (
         <div
@@ -40,14 +85,14 @@ export function SubscriptionForm() {
           role="dialog"
           aria-modal="true"
           aria-labelledby="sub-modal-title"
-          onClick={() => setOpen(false)}
+          onClick={handleClose}
         >
           <div className="sub-modal__card" onClick={(e) => e.stopPropagation()}>
             <button
               type="button"
               className="sub-modal__close"
               aria-label="Cerrar"
-              onClick={() => setOpen(false)}
+              onClick={handleClose}
             >
               ×
             </button>
@@ -62,6 +107,7 @@ export function SubscriptionForm() {
               <label className="sub-form__field">
                 <span>Nombre</span>
                 <input
+                  ref={firstInputRef}
                   type="text"
                   name="name"
                   value={name}
@@ -105,9 +151,9 @@ export function SubscriptionForm() {
                   placeholder="Brevemente: qué necesitan leer"
                 />
               </label>
-              <button type="submit" className="btn btn--primary btn--big sub-form__submit">
-                {sent ? 'Enviado' : 'Enviar solicitud'}
-                <span className="arrow" aria-hidden="true">→</span>
+              <button type="submit" className="btn btn--primary btn--big sub-form__submit" disabled={loading}>
+                {loading ? 'Enviando…' : sent ? 'Enviado ✓' : 'Enviar solicitud'}
+                {!loading && !sent && <span className="arrow" aria-hidden="true">→</span>}
               </button>
             </form>
           </div>
