@@ -1,5 +1,5 @@
-import logo from '../assets/img/impakt.png'
-import telegramLogo from '../assets/img/telegram-logo-0-2.png'
+import logo from '../asset/img/impakt.png'
+import telegramLogo from '../asset/img/telegram-logo-0-2.png'
 import { TELEGRAM_URL } from '../config'
 
 interface NavProps {

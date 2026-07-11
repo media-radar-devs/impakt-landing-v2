@@ -1,5 +1,5 @@
-import banner from '../assets/img/impakt_test.png'
-import telegramLogo from '../assets/img/telegram-logo-0-2.png'
+import banner from '../asset/img/impakt_test.png'
+import telegramLogo from '../asset/img/telegram-logo-0-2.png'
 import { TELEGRAM_URL } from '../config'
 
 interface HeroProps {
