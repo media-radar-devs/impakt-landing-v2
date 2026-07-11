@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import logo from '../asset/img/impakt.png'
+import logo from '../assets/img/impakt.png'
 
 export function Footer() {
   const year = new Date().getFullYear()

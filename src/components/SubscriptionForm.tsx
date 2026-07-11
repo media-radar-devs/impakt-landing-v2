@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import telegramLogo from '../asset/img/telegram-logo-0-2.png'
+import telegramLogo from '../assets/img/telegram-logo-0-2.png'
 import { CONTACT_EMAIL, TELEGRAM_URL } from '../config'
 
 interface SubscriptionFormProps {
