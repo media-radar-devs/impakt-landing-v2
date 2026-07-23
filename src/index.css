@@ -170,7 +170,7 @@ button {
 }
 
 /* =========================================================================
-   Live ticker (top strip — the memorable element)
+   Ticker — headlines strip
    ========================================================================= */
 
 .ticker {
@@ -179,52 +179,12 @@ button {
   z-index: 50;
   background: var(--ink);
   color: var(--paper);
-  border-bottom: 1px solid var(--ink);
-  font-family: var(--mono);
-  font-size: 12px;
+  font-family: var(--sans);
+  font-size: 13px;
   display: flex;
   align-items: center;
-  height: 32px;
+  height: 36px;
   overflow: hidden;
-}
-
-.ticker__live {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 0 16px;
-  height: 100%;
-  border-right: 1px solid rgba(241, 234, 217, 0.12);
-  flex-shrink: 0;
-}
-
-.ticker__dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--signal);
-  box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.85);
-  animation: pulse 1.6s ease-out infinite;
-}
-
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.85); }
-  70% { box-shadow: 0 0 0 8px rgba(255, 193, 7, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0); }
-}
-
-.ticker__live span {
-  letter-spacing: 0.16em;
-}
-
-.ticker__time {
-  color: var(--ash-2);
-  padding: 0 16px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  border-right: 1px solid rgba(241, 234, 217, 0.12);
-  flex-shrink: 0;
 }
 
 .ticker__feed {
@@ -236,12 +196,15 @@ button {
 
 .ticker__track {
   display: flex;
-  gap: 48px;
+  gap: 56px;
   align-items: center;
   height: 100%;
   white-space: nowrap;
-  animation: scroll 60s linear infinite;
   width: max-content;
+}
+
+.ticker__track {
+  animation: scroll 60s linear infinite;
 }
 
 @keyframes scroll {
@@ -252,37 +215,21 @@ button {
 .ticker__item {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
   color: var(--paper);
-  text-decoration: none;
+  opacity: 0.75;
+  font-weight: 400;
+  letter-spacing: 0.01em;
 }
 
-.ticker__item .t {
-  color: var(--ash-2);
-}
-
-.ticker__item .title {
-  color: var(--paper);
-  opacity: 0.92;
-}
-
-.ticker__item .arrow {
-  color: var(--ash-2);
-  margin: 0 -2px;
-}
-
-.ticker__meta {
-  padding: 0 16px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  color: var(--ash-2);
-  border-left: 1px solid rgba(241, 234, 217, 0.12);
+.ticker__item + .ticker__item::before {
+  content: "";
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--ash-2);
+  margin-right: 56px;
   flex-shrink: 0;
-}
-
-@media (max-width: 768px) {
-  .ticker__meta { display: none; }
 }
 
 /* =========================================================================
@@ -1029,7 +976,6 @@ button {
    ========================================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  .ticker__dot   { animation: none; }
   .ticker__track { animation: none; }
   .brand__star   { animation: none; transform: translateY(-2px); }
   .hero__headline,
