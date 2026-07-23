@@ -254,21 +254,16 @@ button {
   align-items: center;
   gap: 10px;
   color: var(--paper);
+  text-decoration: none;
 }
 
 .ticker__item .t {
   color: var(--ash-2);
 }
 
-.ticker__item .k {
-  color: var(--signal);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-.ticker__item .src {
+.ticker__item .title {
   color: var(--paper);
-  opacity: 0.85;
+  opacity: 0.92;
 }
 
 .ticker__item .arrow {

@@ -23,7 +23,7 @@
 - Email: equipo@impaktmedia.cl
 - LinkedIn: https://www.linkedin.com/company/impakt-media-cl
 - X/Twitter: https://x.com/impaktmediacl
-- Telegram: https://t.me/danialertsbot
+- Telegram: https://t.me/Impakt_media_bot
 
 ## Ubicación
 
