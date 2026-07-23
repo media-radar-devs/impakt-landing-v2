@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { NOTICIAS_API } from '../config'
 
 type Noticia = {
   id: string
@@ -31,7 +32,7 @@ export function Ticker() {
   }, [])
 
   useEffect(() => {
-    fetch('/api/noticias?hours=14&limit=200')
+    fetch(NOTICIAS_API)
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {
