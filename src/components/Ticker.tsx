@@ -1,17 +1,10 @@
 import { useEffect, useState } from 'react'
-import { NOTICIAS_API } from '../config'
+import { COBERTURA_API } from '../config'
 
-type Noticia = {
-  id: string
-  title: string
-  url: string
-  published_at: string
-}
-
-const CACHE_KEY = 'ticker_noticias'
+const CACHE_KEY = 'ticker_cobertura'
 const CACHE_TTL = 3_600_000
 
-function loadCache(): Noticia[] | null {
+function loadCache(): string[] | null {
   try {
     const raw = localStorage.getItem(CACHE_KEY)
     if (!raw) return null
@@ -23,41 +16,40 @@ function loadCache(): Noticia[] | null {
   }
 }
 
-function saveCache(data: Noticia[]) {
+function saveCache(data: string[]) {
   try {
     localStorage.setItem(CACHE_KEY, JSON.stringify({ data, ts: Date.now() }))
   } catch {}
 }
 
 export function Ticker() {
-  const [noticias, setNoticias] = useState<Noticia[]>(() => loadCache() ?? [])
+  const [topics, setTopics] = useState<string[]>(() => loadCache() ?? [])
 
   useEffect(() => {
     if (loadCache()) return
-    fetch(NOTICIAS_API)
+    fetch(COBERTURA_API)
       .then(res => res.json())
       .then(data => {
-        if (Array.isArray(data)) {
-          const filtered = data.filter((n: Noticia) => n.title)
-          setNoticias(filtered)
-          saveCache(filtered)
+        if (data && Array.isArray(data.topics) && data.topics.length > 0) {
+          setTopics(data.topics)
+          saveCache(data.topics)
         }
       })
       .catch(() => {})
   }, [])
 
-  if (noticias.length === 0) return null
+  if (topics.length === 0) return null
 
-  const items = [...noticias, ...noticias]
+  const items = [...topics, ...topics]
   const animDuration = Math.max(items.length * 5, 60)
 
   return (
     <div className="ticker">
       <div className="ticker__feed">
         <div className="ticker__track" style={{ animationDuration: `${animDuration}s` }}>
-          {items.map((item, i) => (
-            <span className="ticker__item" key={`${item.id}-${i}`}>
-              <span className="title">{item.title}</span>
+          {items.map((topic, i) => (
+            <span className="ticker__item" key={`${topic}-${i}`}>
+              <span className="title">{topic}</span>
             </span>
           ))}
         </div>
