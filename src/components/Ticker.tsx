@@ -49,7 +49,7 @@ export function Ticker() {
   if (noticias.length === 0) return null
 
   const items = [...noticias, ...noticias]
-  const animDuration = Math.max(items.length * 2.5, 30)
+  const animDuration = Math.max(items.length * 5, 60)
 
   return (
     <div className="ticker">

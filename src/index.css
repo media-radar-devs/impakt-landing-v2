@@ -180,10 +180,10 @@ button {
   background: var(--ink);
   color: var(--paper);
   font-family: var(--sans);
-  font-size: 13px;
+  font-size: clamp(11px, 1.2vw, 14px);
   display: flex;
   align-items: center;
-  height: 36px;
+  height: clamp(28px, 3.2vw, 38px);
   overflow: hidden;
 }
 
@@ -196,7 +196,7 @@ button {
 
 .ticker__track {
   display: flex;
-  gap: 56px;
+  gap: clamp(32px, 4vw, 64px);
   align-items: center;
   height: 100%;
   white-space: nowrap;
@@ -228,7 +228,7 @@ button {
   height: 3px;
   border-radius: 50%;
   background: var(--ash-2);
-  margin-right: 56px;
+  margin-right: clamp(32px, 4vw, 64px);
   flex-shrink: 0;
 }
 
